@@ -2,19 +2,29 @@ package com.employee.model;
 
 import java.io.Serializable;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Document(collection = "employee")
+
+@Entity
+@Table(name = "employee")
 public class Employee implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="emp_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int empId;
 	
+	@Column(name="emp_name")
 	private String empName;
 	
+	@Column(name="salary")
 	private double salary;
 
 	public int getEmpId() {
